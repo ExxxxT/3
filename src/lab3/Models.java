@@ -2,8 +2,8 @@ package lab3;
 
 abstract class Shape
 {
-    String color;
-    Boolean filled;
+   protected String color;
+   protected Boolean filled;
 
     public Shape(String color, Boolean filled)
     {
@@ -39,7 +39,7 @@ abstract class Shape
 
 class Circle extends Shape
 {
-    double radius;
+    protected double radius;
 
     public Circle() { }
 
@@ -77,8 +77,8 @@ class Circle extends Shape
 
 class Rectangle extends Shape
 {
-    double width;
-    double length;
+    protected double width;
+    protected double length;
 
     public Rectangle() { }
 
@@ -127,5 +127,39 @@ class Rectangle extends Shape
     {
         return String.format("Rectangle:\nS=%f\nP=%f\nColor=%s\nIsFilled?=%s",
                 getArea(), getPerimeter(), getColor(), isFilled());
+    }
+}
+class Square extends Rectangle
+{
+    double side;
+    public Square () {}
+    public Square (double side)
+    {
+        this.side = side;
+    }
+    public Square(double side, String color,Boolean isFilled){
+        this.side = side;
+        super.color = color;
+        super.filled = isFilled;
+    }
+    public double getSide() {
+        return side;
+    }
+    public void setSide(double side) {
+        this.side = side;
+    }
+    @Override
+    public void setWidth(double width) {
+        this.width = width;
+    }
+    @Override
+    public void setLength(double length) {
+        this.length = length;
+    }
+    @Override
+    public String toString()
+    {
+        return String.format("Square:\nLength=%f\nSide=%f\nWidth=%s\nIsFilled?=%s",
+                getLength(), getSide(), getWidth(), isFilled());
     }
 }
